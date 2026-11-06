@@ -1,22 +1,60 @@
+import java.util.Random;
+
 public class Person {
-    int x, y;
-    String person = "\uD83E\uDD8A";
-    int personLive = 3;
+    private int x, y;
+    private String image = "\uD83E\uDD8A"; // 🦊
+    private int live = 5;
 
+    Person(int sizeBoard) {
+        Random random = new Random();
+        x = 1 + random.nextInt(sizeBoard);
+        y = sizeBoard;
+    }
 
+    Person(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    Person() {
+        this(1, 5);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getLive() {
+        return live;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public boolean isMoveCorrect(int x, int y) {
+        return this.x == x && Math.abs(this.y - y) == 1
+                || this.y == y && Math.abs(this.x - x) == 1;
+    }
 
     void move(int x, int y) {
         this.x = x;
         this.y = y;
     }
-    public boolean isMoveCorrect(int x, int y) {
-        return this.x == x && Math.abs(this.y - y) == 1 || this.y == y && Math.abs(this.x - x) == 1;
-    }
+
     public void downLive() {
-        if (personLive <= 0) {
-            personLive = 0;
+        if (live <= 0) {
+            live = 0;
         } else {
-            personLive--;
+            live--;
         }
     }
 }
