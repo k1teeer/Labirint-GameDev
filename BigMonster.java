@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class BigMonster extends Monster {
-    private String image = "\uD83D\uDC79"; // 👹
+    private String image = "🦍"; // 👹
 
     BigMonster(int sizeBoard) {
         super(sizeBoard);
